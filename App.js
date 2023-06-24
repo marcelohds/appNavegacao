@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
+import * as React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput, Component } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './pages/Home.js';
+import Sobre from './pages/Sobre.js';
+import Administracao from './pages/Administracao.js';
+import Desenvolvimento from './pages/Desenvolvimento.js';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+	return(
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="Home" screenOptions={{headerTintColor: 'white', headerStyle: {backgroundColor: '#7fb65e'},}}>
+				<Stack.Screen name="Home" component={Home}/>
+				<Stack.Screen name="Sobre" component={Sobre}/>
+				<Stack.Screen name="Administracao" component={Administracao}/>
+				<Stack.Screen name="Desenvolvimento" component={Desenvolvimento}/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
